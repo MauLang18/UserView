@@ -1,0 +1,8 @@
+export const environment = {
+  production: true,
+  environment: "local",
+  clientId:
+    "687391569320-5u4rfrmkirviun959q8194jutqqf3t3e.apps.googleusercontent.com",
+  api: "http://190.124.113.155:9092/api/",
+  filenameCsv: "dev-pos",
+};
