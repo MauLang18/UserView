@@ -42,13 +42,11 @@ export class LoginComponent implements OnInit {
       });
     }
 
-    if (this.form.value.username == "admin") {
-      this.authService.login(this.form.value).subscribe((resp) => {
-        if (resp.isSuccess) {
-          this.router.navigate(["/"]);
-        }
-      });
-    }
+    this.authService.login(this.form.value).subscribe((resp) => {
+      if (resp.isSuccess) {
+        this.router.navigate(["/"]);
+      }
+    });
   }
 
   toggleVisibility() {

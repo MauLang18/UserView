@@ -59,7 +59,7 @@ export class AuthService {
       );
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("authType");
     this.user.next(null);

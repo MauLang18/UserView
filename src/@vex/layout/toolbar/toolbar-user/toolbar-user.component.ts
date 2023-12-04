@@ -1,25 +1,34 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PopoverService } from '../../../components/popover/popover.service';
-import { ToolbarUserDropdownComponent } from './toolbar-user-dropdown/toolbar-user-dropdown.component';
-import icPerson from '@iconify/icons-ic/twotone-person';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from "@angular/core";
+import { PopoverService } from "../../../components/popover/popover.service";
+import { ToolbarUserDropdownComponent } from "./toolbar-user-dropdown/toolbar-user-dropdown.component";
+import icPerson from "@iconify/icons-ic/twotone-person";
 
 @Component({
-  selector: 'vex-toolbar-user',
-  templateUrl: './toolbar-user.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "vex-toolbar-user",
+  templateUrl: "./toolbar-user.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarUserComponent implements OnInit {
-
   dropdownOpen: boolean;
   icPerson = icPerson;
-  
+
   username: string;
 
-  constructor(private popover: PopoverService,
-              private cd: ChangeDetectorRef) { }
+  constructor(private popover: PopoverService, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.username = localStorage.getItem('username');
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return "";
+    }
+
+    var dataUser = JSON.parse(atob(token.split(".")[1]));
+    this.username = dataUser.family_name;
   }
 
   showPopover(originRef: HTMLElement) {
@@ -32,18 +41,18 @@ export class ToolbarUserComponent implements OnInit {
       offsetY: 12,
       position: [
         {
-          originX: 'center',
-          originY: 'top',
-          overlayX: 'center',
-          overlayY: 'bottom'
+          originX: "center",
+          originY: "top",
+          overlayX: "center",
+          overlayY: "bottom",
         },
         {
-          originX: 'end',
-          originY: 'bottom',
-          overlayX: 'end',
-          overlayY: 'top',
+          originX: "end",
+          originY: "bottom",
+          overlayX: "end",
+          overlayY: "top",
         },
-      ]
+      ],
     });
 
     popoverRef.afterClosed$.subscribe(() => {
