@@ -4,14 +4,11 @@
     <meta charset="utf-8" />
     <title>UserView</title>
     <base href="/" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="
-      script-src 'self' http://190.113.124.155:9096;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      connect-src 'self' http://190.113.124.155:9096;
-  "
-    />
+    <meta http-equiv="Content-Security-Policy" content="
+        script-src 'self' 'unsafe-eval' 190.113.124.155:9099;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        connect-src 'self' 190.113.124.155:9099;
+      " />
     <!-- <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
